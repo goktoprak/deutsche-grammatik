@@ -5,17 +5,18 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Deutsche Grammatik</title>
   <link rel="stylesheet" href="style.css">
-  <script src="theme.js"></script>
+  <script src="site.js"></script>
 </head>
 <body>
 
-<header>
-  <h1>Deutsche Grammatik</h1>
-  <p>Übersichtliche Tabellen und Beispiele</p>
-</header>
-
 <main>
-  <section>
+
+  <header class="seitenkopf start">
+    <h1>Deutsche Grammatik</h1>
+    <p>Übersichtliche Tabellen und Beispiele</p>
+  </header>
+
+  <section class="offen">
     <h2>Themen</h2>
     <div class="karten">
       <a class="karte" href="themen/artikel.html">
@@ -73,21 +74,18 @@
     </div>
   </section>
 
-  <section>
+  <section class="offen legende">
     <h2>Farblegende</h2>
     <p>
       In allen Tabellen gilt:
-      <strong class="m" style="padding:0.1rem 0.4rem; border-radius:4px;">Maskulin</strong>
-      <strong class="f" style="padding:0.1rem 0.4rem; border-radius:4px;">Feminin</strong>
-      <strong class="n" style="padding:0.1rem 0.4rem; border-radius:4px;">Neutrum</strong>
-      <strong class="pl" style="padding:0.1rem 0.4rem; border-radius:4px;">Plural</strong>
+      <strong class="m chip">Maskulin</strong>
+      <strong class="f chip">Feminin</strong>
+      <strong class="n chip">Neutrum</strong>
+      <strong class="pl chip">Plural</strong>
     </p>
   </section>
-</main>
 
-<footer>
-  Deutsche Grammatik · Erstellt zum Lernen und Nachschlagen
-</footer>
+</main>
 
 </body>
 </html>

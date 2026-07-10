@@ -24,10 +24,18 @@ Eine kleine statische Website mit übersichtlichen Tabellen und Beispielen zur d
 ```
 index.html          Startseite mit Themenübersicht
 style.css           gemeinsames Stylesheet
+site.js             gemeinsames Seitengerüst: Kopf- und Fußzeile, Themenmenü,
+                    Kapitel-Navigation, Blättern, Hell/Dunkel-Schalter
 themen/             eine HTML-Seite pro Thema
 ```
 
-Neues Thema hinzufügen: Seite in `themen/` anlegen (bestehende Seite als Vorlage kopieren) und eine Karte in `index.html` ergänzen.
+Kopf- und Fußzeile werden zentral von `site.js` aufgebaut – die HTML-Seiten enthalten nur noch ihren eigenen Inhalt (Titel, Untertitel, Abschnitte).
+
+Neues Thema hinzufügen:
+
+1. Seite in `themen/` anlegen (bestehende Seite als Vorlage kopieren),
+2. eine Karte in `index.html` ergänzen,
+3. das Thema in die Liste `THEMEN` in `site.js` eintragen – dann erscheint es automatisch im Themenmenü und beim Blättern.
 
 ## Lokal ansehen
 
