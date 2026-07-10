@@ -2,7 +2,7 @@
 
 Eine kleine statische Website mit übersichtlichen Tabellen und Beispielen zur deutschen Grammatik. Alle Inhalte sind auf Deutsch; englische Übersetzungen gibt es nur bei den Beispielsätzen.
 
-**Live:** https://DEIN-BENUTZERNAME.github.io/deutsche-grammatik/
+**Live:** https://goktoprak.github.io/deutsche-grammatik/
 
 ## Themen
 
