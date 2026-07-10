@@ -19,6 +19,39 @@
   --feminin-bg: #faecf0;
   --neutrum-bg: #eaf5ee;
   --plural-bg: #faf1e5;
+
+  --th-bg: #eef1f5;
+  --beispiel-bg: #f2f5f9;
+  --hinweis-bg: #fdf6e7;
+  --hinweis-border: #d9a441;
+  --heading: #234a85;
+}
+
+/* ===== Dunkles Farbschema ===== */
+[data-theme="dark"] {
+  --bg: #14181f;
+  --card: #1d232d;
+  --text: #e4e8ee;
+  --muted: #9aa5b1;
+  --accent: #24487e;
+  --accent-dark: #1b3861;
+  --border: #303845;
+
+  --maskulin: #7fb3e8;
+  --feminin: #e592ab;
+  --neutrum: #7fc79a;
+  --plural: #e0a866;
+
+  --maskulin-bg: #1e3a5c;
+  --feminin-bg: #47242f;
+  --neutrum-bg: #1f3d2a;
+  --plural-bg: #453218;
+
+  --th-bg: #252d39;
+  --beispiel-bg: #232b37;
+  --hinweis-bg: #332b1a;
+  --hinweis-border: #a87c2e;
+  --heading: #8ab4e8;
 }
 
 * { box-sizing: border-box; }
@@ -61,6 +94,21 @@ header { position: relative; }
 
 .zurueck:hover { background: rgba(255, 255, 255, 0.3); }
 
+/* ===== Hell/Dunkel-Schalter ===== */
+.theme-toggle {
+  display: block;
+  margin: 0.8rem auto 0;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  padding: 0.4rem 0.7rem;
+  font-size: 1.05rem;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.theme-toggle:hover { border-color: var(--muted); }
+
 @media (max-width: 640px) {
   .zurueck {
     position: static;
@@ -87,12 +135,12 @@ section {
 
 h2 {
   margin-top: 0;
-  color: var(--accent-dark);
+  color: var(--heading);
   border-bottom: 2px solid var(--border);
   padding-bottom: 0.4rem;
 }
 
-h3 { color: var(--accent-dark); margin-bottom: 0.4rem; }
+h3 { color: var(--heading); margin-bottom: 0.4rem; }
 
 /* ===== Tabellen ===== */
 .tabelle-scroll { overflow-x: auto; }
@@ -110,12 +158,12 @@ th, td {
   text-align: center;
 }
 
-th { background: #eef1f5; }
+th { background: var(--th-bg); }
 
 td:first-child, th:first-child {
   text-align: left;
   font-weight: 600;
-  background: #eef1f5;
+  background: var(--th-bg);
   white-space: nowrap;
 }
 
@@ -129,7 +177,7 @@ th.m, th.f, th.n, th.pl { font-weight: 700; }
 
 /* ===== Beispiele ===== */
 .beispiel {
-  background: #f2f5f9;
+  background: var(--beispiel-bg);
   border-left: 4px solid var(--accent);
   border-radius: 0 6px 6px 0;
   padding: 0.6rem 0.9rem;
@@ -146,8 +194,8 @@ th.m, th.f, th.n, th.pl { font-weight: 700; }
 
 /* ===== Hinweisboxen ===== */
 .hinweis {
-  background: #fdf6e7;
-  border-left: 4px solid #d9a441;
+  background: var(--hinweis-bg);
+  border-left: 4px solid var(--hinweis-border);
   border-radius: 0 6px 6px 0;
   padding: 0.6rem 0.9rem;
   margin: 0.8rem 0;
@@ -178,6 +226,20 @@ th.m, th.f, th.n, th.pl { font-weight: 700; }
 }
 
 .karte h3 { margin: 0 0 0.3rem; }
+
+.stufe {
+  float: right;
+  font-size: 0.75rem;
+  font-weight: 700;
+  padding: 0.15rem 0.55rem;
+  border-radius: 999px;
+  margin-left: 0.5rem;
+  color: #fff;
+}
+
+.stufe.a1 { background: #3d8a58; }
+.stufe.a2 { background: #2f6db3; }
+.stufe.b1 { background: #c07a2f; }
 .karte p  { margin: 0; color: var(--muted); font-size: 0.92rem; }
 
 .karte.bald {
