@@ -48,6 +48,16 @@
   var ICON_SONNE = '<svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>';
   var ICON_PFEIL = '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>';
 
+  /* ---- Favicon (blaues G, als Daten-URI – keine extra Datei nötig) ---- */
+  var favicon = document.createElement("link");
+  favicon.rel = "icon";
+  favicon.href = "data:image/svg+xml," + encodeURIComponent(
+    '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">' +
+    '<rect width="64" height="64" rx="14" fill="#2f5fa8"/>' +
+    '<text x="32" y="45" font-family="system-ui,sans-serif" font-size="38" font-weight="700" fill="#fff" text-anchor="middle">G</text>' +
+    "</svg>");
+  document.head.appendChild(favicon);
+
   /* ---- Adressleisten-Farbe (mobil) an das Farbschema koppeln ---- */
   var metaFarbe = document.createElement("meta");
   metaFarbe.name = "theme-color";
