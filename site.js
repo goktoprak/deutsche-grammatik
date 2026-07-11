@@ -1,6 +1,6 @@
 /* ===== Deutsche Grammatik – gemeinsames Seitengerüst =====
  *
- * Baut auf jeder Seite die Kopfzeile (Themenmenü, Hell/Dunkel-Schalter),
+ * Baut auf jeder Seite die Kopfzeile (mit Hell/Dunkel-Schalter),
  * die Kapitel-Navigation, das Blättern zwischen Themen und die Fußzeile
  * auf. Kopf- und Fußzeile werden so nur noch an dieser einen Stelle
  * gepflegt statt in jeder HTML-Datei.
@@ -10,18 +10,18 @@
 
   /* Reihenfolge = Lernreihenfolge, wie die Karten auf der Startseite */
   var THEMEN = [
-    { datei: "artikel",             titel: "Artikel",                    stufe: "A1.1" },
-    { datei: "hilfsverben",         titel: "Hilfsverben",                stufe: "A1.1" },
-    { datei: "pronomen",            titel: "Pronomen",                   stufe: "A1.2" },
-    { datei: "negation",            titel: "Negation",                   stufe: "A1.2" },
-    { datei: "modalverben",         titel: "Modalverben",                stufe: "A1.2" },
-    { datei: "zeitformen",          titel: "Zeitformen",                 stufe: "A2.1" },
-    { datei: "praepositionen",      titel: "Präpositionen",              stufe: "A2.1" },
-    { datei: "kasus",               titel: "Kasus",                      stufe: "A2.2" },
-    { datei: "richtung-ort",        titel: "Richtungs- und Ortsangaben", stufe: "A2.2" },
-    { datei: "adjektive",           titel: "Adjektive",                  stufe: "B1.1" },
-    { datei: "konjunktionen",       titel: "Konjunktionen",              stufe: "B1.1" },
-    { datei: "pronominaladverbien", titel: "Pronominaladverbien",        stufe: "B1.2" }
+    { datei: "artikel",             titel: "Artikel" },
+    { datei: "hilfsverben",         titel: "Hilfsverben" },
+    { datei: "pronomen",            titel: "Pronomen" },
+    { datei: "negation",            titel: "Negation" },
+    { datei: "modalverben",         titel: "Modalverben" },
+    { datei: "zeitformen",          titel: "Zeitformen" },
+    { datei: "praepositionen",      titel: "Präpositionen" },
+    { datei: "kasus",               titel: "Kasus" },
+    { datei: "richtung-ort",        titel: "Richtungs- und Ortsangaben" },
+    { datei: "adjektive",           titel: "Adjektive" },
+    { datei: "konjunktionen",       titel: "Konjunktionen" },
+    { datei: "pronominaladverbien", titel: "Pronominaladverbien" }
   ];
 
   var root = document.documentElement;
@@ -46,8 +46,7 @@
   /* ---- Icons ---- */
   var ICON_MOND = '<svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3 7 7 0 0 0 21 12.8z"/></svg>';
   var ICON_SONNE = '<svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>';
-  var ICON_PFEIL = '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>';
-
+  var ICON_HAUS = '<svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m3 9.5 9-7 9 7V20a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M9 22v-8h6v8"/></svg>';
   /* ---- Favicon (blaues G, als Daten-URI – keine extra Datei nötig) ---- */
   var favicon = document.createElement("link");
   favicon.rel = "icon";
@@ -76,7 +75,7 @@
 
   /* ---- Hell/Dunkel-Schalter ---- */
   function schalterBauen() {
-    var knopf = el("button", "theme-toggle");
+    var knopf = el("button", "kopf-knopf theme-toggle");
     knopf.type = "button";
     function anzeigen() {
       var istDunkel = root.getAttribute("data-theme") === "dark";
@@ -96,7 +95,7 @@
     return knopf;
   }
 
-  /* ---- Kopfzeile mit Themenmenü ---- */
+  /* ---- Kopfzeile ---- */
   function kopfzeileBauen() {
     var kopf = el("header", "kopfzeile");
     var innen = el("nav", "kopfzeile-innen");
@@ -106,36 +105,11 @@
     marke.href = wurzel + "index.html";
     innen.appendChild(marke);
 
-    var menue = el("details", "themen-menue");
-    var griff = el("summary", null, "Themen " + ICON_PFEIL);
-    menue.appendChild(griff);
-
-    var liste = el("ul");
-    for (var i = 0; i < THEMEN.length; i++) {
-      var t = THEMEN[i];
-      var a = el("a", null, t.titel + ' <span class="stufe-klein">' + t.stufe + "</span>");
-      a.href = wurzel + "themen/" + t.datei + ".html";
-      if (i === themaIndex) {
-        a.className = "aktiv";
-        a.setAttribute("aria-current", "page");
-      }
-      var li = document.createElement("li");
-      li.appendChild(a);
-      liste.appendChild(li);
-    }
-    menue.appendChild(liste);
-    innen.appendChild(menue);
-
-    /* Menü schließen bei Klick daneben oder Escape */
-    document.addEventListener("click", function (ev) {
-      if (menue.open && !menue.contains(ev.target)) menue.open = false;
-    });
-    document.addEventListener("keydown", function (ev) {
-      if (ev.key === "Escape" && menue.open) {
-        menue.open = false;
-        griff.focus();
-      }
-    });
+    var heim = el("a", "kopf-knopf", ICON_HAUS);
+    heim.href = wurzel + "index.html";
+    heim.setAttribute("aria-label", "Zur Startseite");
+    heim.title = "Zur Startseite";
+    innen.appendChild(heim);
 
     innen.appendChild(schalterBauen());
     kopf.appendChild(innen);
